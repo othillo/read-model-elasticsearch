@@ -1,27 +1,14 @@
 language: php
 
-sudo: true
+services:
+  - elasticsearch
 
-addons:
-  apt:
-    packages:
-      - oracle-java8-set-default
-
-matrix:
-  fast_finish: true
-  include:
-    - php: 7.0
-    - php: 7.1
-    - php: 7.2
-
-env:
-  global:
-    - ES_VERSION="5.2.2"
+php:
+  - 7.2
+  - 7.3
+  - 7.4
 
 before_install:
-  - curl -O "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}.deb"
-  - sudo dpkg -i --force-confnew elasticsearch-${ES_VERSION}.deb
-  - sudo service elasticsearch restart
   - phpenv config-rm xdebug.ini || return 0
   - echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini || return 0
 
@@ -30,7 +17,8 @@ install:
   - composer info
 
 script:
-  - vendor/bin/phpunit --exclude-group=none
+  - vendor/bin/phpunit
+  - vendor/bin/phpunit --group=functional
   - git log $(git describe --abbrev=0 --tags)...HEAD --no-merges --pretty=format:"* [%h](http://github.com/${TRAVIS_REPO_SLUG}/commit/%H) %s (%cN)"
 
 branches:

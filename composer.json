@@ -3,8 +3,8 @@
     "description": "Elasticsearch read model implementation using elastic/elasticsearch-php",
     "license": "MIT",
     "require": {
-        "php": ">=7.0",
-        "broadway/broadway": "^2.0",
+        "php": ">=7.2",
+        "broadway/broadway": "^2.2.1",
         "elasticsearch/elasticsearch": "^5.0"
     },
     "authors": [
@@ -34,7 +34,7 @@
       }
     ],
     "require-dev": {
-      "phpunit/phpunit": "^5.0"
+      "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
@@ -48,7 +48,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4.x-dev"
+            "dev-master": "1.0.x-dev"
         }
     }
 }
