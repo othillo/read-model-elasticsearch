@@ -5,7 +5,8 @@
     "require": {
         "php": ">=7.2",
         "broadway/broadway": "^2.2.1",
-        "elasticsearch/elasticsearch": "^5.0"
+        "elasticsearch/elasticsearch": "^5.0",
+        "broadway/uuid-generator": "^1.0"
     },
     "authors": [
       {
